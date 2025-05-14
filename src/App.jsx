@@ -8,7 +8,7 @@ export function App() {
   //Estado que armazena os dados de clima da API
   const [weather, setWeather] = useState(null)
   //Chave da API
-  const API_KEY = 'b673c8d516da5c13fa97d66f6764fa7b'
+  const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY
 
   //FUnção chamada quando o usuario clica no botão "Buscar"
   const getWeather = async () => {
