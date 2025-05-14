@@ -18,5 +18,5 @@ Este projeto foi desenvolvido para o treinamento do uso de API
 - Manipulação de API com `fetch`
 - Manipulação de Error
 - Utilização de Hooks `useState`
-- Alteração dinâmica de estilos usando `.style`
-- Atualização do conteúdo da página usando `.innerHTML`
+- Mostrar dados na tela após uma requisição
+- Estilização da pagina com o Tailwind CSS
