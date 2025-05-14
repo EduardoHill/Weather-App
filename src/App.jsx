@@ -1,23 +1,37 @@
 import React, { useState } from 'react'
 
 export function App() {
+  //Estado que armazena o nome da cidade
   const [city, setCity] = useState('')
+  //Estado que armazena a mensagem de erro
   const [error, setError] = useState('')
+  //Estado que armazena os dados de clima da API
   const [weather, setWeather] = useState(null)
+  //Chave da API
   const API_KEY = 'b673c8d516da5c13fa97d66f6764fa7b'
 
+  //FUnção chamada quando o usuario clica no botão "Buscar"
   const getWeather = async () => {
+    //Se o campo cidade estiver vazio, sai da função
     if (!city) return
     try {
+      //Faz a requisição para a API de clima usando a cidade digitada
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=pt_br`
       )
+
+      //Se a resposta for invalida , lança um erro
       if (!response.ok) throw new Error('Cidade não encontrada!')
+
+      //Convertendo a resposta da API em JSON
       const data = await response.json()
       setWeather(data) //Aramzenamento dos dados recebidos
-      setError('')
+      setError('') //Limpa qualquer mensagem de error anterior
     } catch (err) {
+      //SE acontecer um erro, limpa os dados anteriores
       setWeather(null)
+
+      //Mostra a mensagem de erro
       setError(err.message)
     }
   }
@@ -38,7 +52,7 @@ export function App() {
       >
         Buscar
       </button>
-      {error && <p> {error} </p>}
+      {error && <p class='text-red-700'> {error} </p>}
       {weather && (
         <div className='flex flex-col bg-gray-700 p-5 border border-gray-900 rounded-2xl'>
           <h2 className='text-white text-[20px]'>
